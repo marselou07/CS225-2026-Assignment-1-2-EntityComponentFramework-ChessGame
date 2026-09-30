@@ -41,6 +41,7 @@ class Piece : public Entity
 
         // Must release al the memory allocated to the components attached to the entity
         ~Piece();
+        Piece() = default;
 };
 
 

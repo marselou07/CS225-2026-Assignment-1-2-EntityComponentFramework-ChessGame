@@ -6,7 +6,7 @@ Piece::Piece(bool isWhite)
 }
 Piece::Piece(bool iswhite, int x, int y, char letter)
 {
-    is_color_white = isWhite;
+    is_color_white = iswhite;
     attach(new PositionComponent(x,y));
     attach(new VisualComponent(letter));
 }
@@ -51,6 +51,7 @@ void ChessBoard::initializeBoard()
 
 Piece *ChessBoard::getPieceAt(int x, int y)
 {
+    
     return nullptr;
 }
 
