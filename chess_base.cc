@@ -18,14 +18,14 @@ bool Piece::isWhite()
 
 PositionComponent *Piece::getPosition()
 {
-    Component* comp = getComponent("position");
+    Component* comp = getComponent("Position");
     PositionComponent* pos = static_cast<PositionComponent*>(comp);
     return pos;
 }
 
 VisualComponent *Piece::getVisual()
 {
-    Component* comp = getComponent("visual");
+    Component* comp = getComponent("Visual");
     VisualComponent* visual = static_cast<VisualComponent*>(comp);
     return visual;
 }
@@ -43,21 +43,26 @@ void ChessBoard::initializeBoard()
     //initialize de board set everithing to  null
 
 
-    Pawn* pawn = new Pawn();
-    setPieceAt(pawn,0,0);
-    //board[0][0] = pawn;
+    Piece* pawn = new Pawn(true, 0,0, 'p');
+    Piece* pawnblack = new Pawn(false, 0,0, 'P');
 
+    board[1][0] = pawn;
+    board[1][1] = pawn;
+    board[1][3] = pawnblack;
 }
 
 Piece *ChessBoard::getPieceAt(int x, int y)
 {
-    
-    return nullptr;
+    return this->board[y][x];
 }
 
 void ChessBoard::setPieceAt(Piece *piece, int x, int y)
 {
-
+    if(piece->canMoveTo(x,y))
+    {
+        board[y][x] = piece;
+    }
+    return;
 }
 
 ChessBoard::~ChessBoard()

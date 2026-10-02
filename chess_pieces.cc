@@ -24,6 +24,8 @@ bool Pawn::canMoveTo(int x, int y)
     {
         return bounds;
     }
+    if(this->is_color_white == true)
+    {
     if((this->getPosition())->getX() == x &&(this->getPosition())->getY() +1  == y)
     {
         this->FirstMove = false;
@@ -33,17 +35,22 @@ bool Pawn::canMoveTo(int x, int y)
     {
         this->FirstMove = false;
         return true;
+    }        
     }
-    else if((this->getPosition())->getX() == x &&(this->getPosition())->getY() -1  == y)
+    else
+    {
+    if((this->getPosition())->getX() == x &&(this->getPosition())->getY() -1  == y)
     {
         this->FirstMove = false;
         return true;
     }
-        else if(((this->getPosition())->getX() == x &&(this->getPosition())->getY() - 2  == y )&& this->FirstMove == true)
+    else if(((this->getPosition())->getX() == x &&(this->getPosition())->getY() - 2  == y )&& this->FirstMove == true)
     {
         this->FirstMove = false;
         return true;
     }
+    }
+
     return false;
 }
 
@@ -116,7 +123,10 @@ Bishop::Bishop(bool isWhite)
 }
 
 Bishop::Bishop(bool iswhite, int x, int y, char letter)
-{
+{    
+    is_color_white = iswhite;
+    attach(new PositionComponent(x,y));
+    attach(new VisualComponent(letter));
 }
 
 bool Bishop::canMoveTo(int x, int y)
@@ -124,21 +134,21 @@ bool Bishop::canMoveTo(int x, int y)
     bool bounds = x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
     int posX = (this->getPosition())->getX();
     int posY = (this->getPosition())->getY();
-    int distanceX = abs(x- posX);
-    int distanceY = abs(y -posY);
+    int distanceX = std::abs(x- posX);
+    int distanceY = std::abs(y -posY);
     if(distanceX != distanceY)
     {
         return false;
     }
-    if(bounds == false)
+    else if(bounds == false)
     {
         return bounds;
     }
-    if(posX + distanceX == x && posY+ distanceY== y || posX - distanceX == x && posY - distanceY== y)
+    else if(posX + distanceX == x && posY+ distanceY== y || posX - distanceX == x && posY - distanceY== y)
     {
         return true;
     }
-    if(posX - distanceX == x && posY + distanceY== y || posX + distanceX == x && posY - distanceY== y)
+    else if(posX - distanceX == x && posY + distanceY== y || posX + distanceX == x && posY - distanceY== y)
     {
         return true;
     }
@@ -148,4 +158,152 @@ bool Bishop::canMoveTo(int x, int y)
 PieceType Bishop::getType()
 {
     return BISHOP;
+}
+//-----------------------------
+//Rook
+
+Rook::Rook()
+{
+}
+
+Rook::Rook(bool isWhite)
+{
+    is_color_white = isWhite;
+
+}
+
+Rook::Rook(bool iswhite, int x, int y, char letter)
+{
+    is_color_white = iswhite;
+    attach(new PositionComponent(x,y));
+    attach(new VisualComponent(letter));
+}
+
+bool Rook::canMoveTo(int x, int y)
+{
+    bool bounds = x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
+    int posX = (this->getPosition())->getX();
+    int posY = (this->getPosition())->getY();
+    int distanceX = std::abs(x- posX);
+    int distanceY = std::abs(y -posY);
+    if(bounds == false)
+    {
+        return bounds;
+    }
+    if((posX + distanceX) == x && posY == y ||
+     posX == x && posY + distanceY == y)
+    {
+        return true;
+    }
+    else if((posX - distanceX) == x && posY == y ||
+     posX == x && posY - distanceY == y)
+    {
+        return true;
+    }
+    return false;
+}
+
+PieceType Rook::getType()
+{
+    return ROOK;
+}
+//----------------------------
+//Queen
+
+Queen::Queen()
+{
+}
+
+Queen::Queen(bool isWhite)
+{
+    is_color_white = isWhite;
+}
+
+Queen::Queen(bool iswhite, int x, int y, char letter)
+{
+    is_color_white = iswhite;
+    attach(new PositionComponent(x,y));
+    attach(new VisualComponent(letter));
+}
+
+bool Queen::canMoveTo(int x, int y)
+{
+    bool bounds = x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
+    int posX = (this->getPosition())->getX();
+    int posY = (this->getPosition())->getY();
+    int distanceX = std::abs(x- posX);
+    int distanceY = std::abs(y -posY);
+    if(bounds == false)
+    {
+        return bounds;
+    }
+    if((posX + distanceX) == x && posY == y ||
+     posX == x && posY + distanceY == y)
+    {
+        return true;
+    }
+    else if((posX - distanceX) == x && posY == y ||
+     posX == x && posY - distanceY == y)
+    {
+        return true;
+    }
+    else if(posX + distanceX == x && posY+ distanceY== y || posX - distanceX == x && posY - distanceY== y)
+    {
+        return true;
+    }
+    else if(posX - distanceX == x && posY + distanceY== y || posX + distanceX == x && posY - distanceY== y)
+    {
+        return true;
+    }
+    return false;
+}
+
+PieceType Queen::getType()
+{
+    return QUEEN;
+}
+//--------------------------------------------
+//King
+
+King::King()
+{
+}
+
+King::King(bool isWhite)
+{
+    is_color_white = isWhite;
+}
+
+King::King(bool iswhite, int x, int y, char letter)
+{
+    is_color_white = iswhite;
+    attach(new PositionComponent(x,y));
+    attach(new VisualComponent(letter));
+}
+
+bool King::canMoveTo(int x, int y)
+{
+    bool bounds = x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
+    int posX = (this->getPosition())->getX();
+    int posY = (this->getPosition())->getY();
+    if(bounds == false)
+    {
+        return bounds;
+    }
+    if(posX +1 == x && posY == y || posX -1 == x && posY == y
+    ||posX == x && posY + 1 == y || posX == x && posY - 1 == y) 
+    {
+        return true;
+    }
+    else if(posX +1 == x && posY + 1 == y || posX - 1 == x && posY == y +1
+    ||posX + 1 == x && posY - 1 == y || posX -1 == x && posY - 1 == y) 
+    {
+        return true;
+    }
+    return false;
+}
+
+PieceType King::getType()
+{
+    return KING;
 }
