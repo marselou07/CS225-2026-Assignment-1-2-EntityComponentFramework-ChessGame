@@ -41,14 +41,8 @@ Piece::~Piece()
 void ChessBoard::initializeBoard()
 {
     //initialize de board set everithing to  null
+    
 
-
-    Piece* pawn = new Pawn(true, 0,0, 'p');
-    Piece* pawnblack = new Pawn(false, 0,0, 'P');
-
-    board[1][0] = pawn;
-    board[1][1] = pawn;
-    board[1][3] = pawnblack;
 }
 
 Piece *ChessBoard::getPieceAt(int x, int y)

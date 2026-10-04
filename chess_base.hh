@@ -28,7 +28,7 @@ class Piece : public Entity
         bool isWhite();
 
         // Get the posicion component attached to the entity
-        PositionComponent* getPosition();
+        PositionComponent* getPosition(); 
         
         // Get the visual component attached to the entity
         VisualComponent* getVisual();
