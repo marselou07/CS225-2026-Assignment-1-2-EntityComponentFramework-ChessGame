@@ -17,19 +17,27 @@ Pawn::Pawn(bool isWhite)
 
 bool Pawn::canMoveTo(int x, int y)
 {
+    bool inside =  x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
+    if(inside == false)
+    {
+        return false;
+    }
     int posX = (this->getPosition())->getX();
     int posY = (this->getPosition())->getY();
-    int distance = (isWhite ? 1 : -1);
+    int distance = (this->isWhite() ? 1 : -1);
     if(posX == x && posY  + distance== y)
     {
+        FirstMove= false;
         return true;
     }
     else if(FirstMove == true && posX == x && posY  + 2* distance== y)
     {
+        FirstMove= false;
         return true;
     }
     else if((posX + 1 == x || posX -1 == x)&&posY  + distance== y)
     {
+        FirstMove= false;
         return true;
     }
     return false;
@@ -57,6 +65,11 @@ Knight::Knight(bool isWhite)
 
 bool Knight::canMoveTo(int x, int y)
 {
+    bool inside =  x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
+    if(inside == false)
+    {
+        return false;
+    }
     int posX = (this->getPosition())->getX();
     int posY = (this->getPosition())->getY();
     int dx = abs(x-posX);
@@ -88,6 +101,11 @@ Bishop::Bishop(bool isWhite)
 }
 bool Bishop::canMoveTo(int x, int y)
 {
+    bool inside =  x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
+    if(inside == false)
+    {
+        return false;
+    }
     int posX = (this->getPosition())->getX();
     int posY = (this->getPosition())->getY();
     int distanceX = std::abs(x- posX);
@@ -120,6 +138,11 @@ Rook::Rook(bool isWhite)
 }
 bool Rook::canMoveTo(int x, int y)
 {
+    bool inside =  x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
+    if(inside == false)
+    {
+        return false;
+    }
     int posX = (this->getPosition())->getX();
     int posY = (this->getPosition())->getY();
 
@@ -154,6 +177,11 @@ Queen::Queen(bool isWhite)
 }
 bool Queen::canMoveTo(int x, int y)
 {
+    bool inside =  x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
+    if(inside == false)
+    {
+        return false;
+    }
     int posX = (this->getPosition())->getX();
     int posY = (this->getPosition())->getY();
     int distanceX = std::abs(x- posX);
@@ -193,6 +221,11 @@ King::King(bool isWhite)
 }
 bool King::canMoveTo(int x, int y)
 {
+    bool inside =  x >= 0 && x < BOARD_SIZE && y >= 0 && y < BOARD_SIZE;
+    if(inside == false)
+    {
+        return false;
+    }
     int posX = (this->getPosition())->getX();
     int posY = (this->getPosition())->getY();
     int distanceX = std::abs(x- posX);

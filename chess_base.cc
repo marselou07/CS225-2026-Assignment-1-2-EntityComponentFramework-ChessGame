@@ -4,9 +4,9 @@ Piece::Piece(bool isWhite)
 {
     is_color_white = isWhite;
 }
-Piece::Piece(bool iswhite, int x, int y, char letter)
+Piece::Piece(bool isWhite, int x, int y, char letter)
 {
-    is_color_white = iswhite;
+    is_color_white = isWhite;
     attach(new PositionComponent(x,y));
     attach(new VisualComponent(letter));
 }
@@ -41,8 +41,20 @@ Piece::~Piece()
 void ChessBoard::initializeBoard()
 {
     //initialize de board set everithing to  null
+    for(int i= 0; i!=BOARD_SIZE;i++)
+    {
+        for(int e = 0; e!= BOARD_SIZE; e++)
+        {
+            board[i][e]= nullptr;
+        }
+    }
+    //Create the pawns
+    for(int i = 0 ; i!= BOARD_SIZE; i++)
+    {
+        board[1][i]= new Pawn(true,i,1,'p');
+        board[6][i]= new Pawn(false,i,6,'P');
+    }
     
-
 }
 
 Piece *ChessBoard::getPieceAt(int x, int y)
@@ -52,11 +64,13 @@ Piece *ChessBoard::getPieceAt(int x, int y)
 
 void ChessBoard::setPieceAt(Piece *piece, int x, int y)
 {
-    if(piece->canMoveTo(x,y))
+
+    if(piece->canMoveTo(x,y) == true)
     {
-        board[y][x] = piece;
+         board[y][x] = piece;
     }
-    return;
+   
+    
 }
 
 ChessBoard::~ChessBoard()
