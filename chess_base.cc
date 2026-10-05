@@ -54,7 +54,16 @@ void ChessBoard::initializeBoard()
         board[1][i]= new Pawn(true,i,1,'p');
         board[6][i]= new Pawn(false,i,6,'P');
     }
-    
+    //Set knights
+    board[0][1]= new Knight(true,1,0,'k');
+    board[7][1]= new Knight(false,1,7,'K');
+    board[0][6]= new Knight(true,6,0,'k');
+    board[7][6]= new Knight(false,6,7,'K');
+    //Set bishops
+    board[0][2]= new Bishop(true,2,0,'b');
+    board[7][2]= new Bishop(false,2,7,'B');
+    board[0][5]= new Bishop(true,5,0,'b');
+    board[7][5]= new Bishop(false,5,7,'B');
 }
 
 Piece *ChessBoard::getPieceAt(int x, int y)
@@ -65,10 +74,9 @@ Piece *ChessBoard::getPieceAt(int x, int y)
 void ChessBoard::setPieceAt(Piece *piece, int x, int y)
 {
 
-    if(piece->canMoveTo(x,y) == true)
-    {
-         board[y][x] = piece;
-    }
+
+    board[y][x] = piece;
+    
    
     
 }

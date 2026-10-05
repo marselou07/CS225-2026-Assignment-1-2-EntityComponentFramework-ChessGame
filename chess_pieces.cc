@@ -1,11 +1,9 @@
 #include "chess_pieces.hh"
 //----------------------------
 //Pawn
-Pawn::Pawn(bool isWhite, int x, int y, char letter)
+Pawn::Pawn(bool isWhite, int x, int y, char letter) : Piece(isWhite,x,y,letter)
 {
-    is_color_white = isWhite;
-    attach(new PositionComponent(x,y));
-    attach(new VisualComponent(letter));
+    
 }
 
 Pawn::Pawn(bool isWhite)
@@ -51,11 +49,8 @@ PieceType Pawn::getType()
 //-------------------------------------
 //Knigh
 
-Knight::Knight(bool isWhite, int x, int y, char letter)
+Knight::Knight(bool isWhite, int x, int y, char letter): Piece(isWhite,x,y,letter)
 {
-    is_color_white = isWhite;
-    attach(new PositionComponent(x,y));
-    attach(new VisualComponent(letter));
 }
 
 Knight::Knight(bool isWhite)
@@ -88,11 +83,8 @@ PieceType Knight::getType()
 //----------------------------------------
 //Bishop
 
-Bishop::Bishop(bool isWhite, int x, int y, char letter)
+Bishop::Bishop(bool isWhite, int x, int y, char letter): Piece(isWhite,x,y,letter)
 {
-    is_color_white = isWhite;
-    attach(new PositionComponent(x,y));
-    attach(new VisualComponent(letter));
 }
 
 Bishop::Bishop(bool isWhite)
@@ -124,11 +116,8 @@ PieceType Bishop::getType()
 //-----------------------------
 //Rook
 
-Rook::Rook(bool isWhite, int x, int y, char letter)
+Rook::Rook(bool isWhite, int x, int y, char letter): Piece(isWhite,x,y,letter)
 {
-    is_color_white = isWhite;
-    attach(new PositionComponent(x,y));
-    attach(new VisualComponent(letter));
 }
 
 Rook::Rook(bool isWhite)
@@ -164,11 +153,8 @@ PieceType Rook::getType()
 //----------------------------
 //Queen
 
-Queen::Queen(bool isWhite, int x, int y, char letter)
+Queen::Queen(bool isWhite, int x, int y, char letter): Piece(isWhite,x,y,letter)
 {
-    is_color_white = isWhite;
-    attach(new PositionComponent(x,y));
-    attach(new VisualComponent(letter));
 }
 
 Queen::Queen(bool isWhite)
@@ -208,11 +194,8 @@ PieceType Queen::getType()
 //--------------------------------------------
 //King
 
-King::King(bool isWhite, int x, int y, char letter)
+King::King(bool isWhite, int x, int y, char letter): Piece(isWhite,x,y,letter)
 {
-    is_color_white = isWhite;
-    attach(new PositionComponent(x,y));
-    attach(new VisualComponent(letter));
 }
 
 King::King(bool isWhite)
