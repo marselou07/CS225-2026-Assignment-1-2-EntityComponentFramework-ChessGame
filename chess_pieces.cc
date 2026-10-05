@@ -197,7 +197,7 @@ bool King::canMoveTo(int x, int y)
     int posY = (this->getPosition())->getY();
     int distanceX = std::abs(x- posX);
     int distanceY = std::abs(y -posY);
-    if(distanceX <= 1 && distanceY <= 1 && distanceX + distanceY != 0)
+    if(distanceX <= 1 && distanceY <= 1)
     {
         return true;
     }
