@@ -5,6 +5,7 @@
 class Pawn : public Piece
 { 
     public:
+    //Set the first move
     bool FirstMove = true;
     Pawn(bool isWhite, int x, int y, char letter);
     Pawn(bool isWhite);

@@ -36,7 +36,7 @@ class Piece : public Entity
         // Pure virtual function, determines if the Piece can move to the coordinates (x,y)
         virtual bool canMoveTo(int x, int y) = 0;
 
-        // Pure virtual function, returns the type of the Piece based on the Enum PieceType
+        // Pure virtual function, returns the type of the Piece bsased on the Enum PieceType
         virtual PieceType getType() = 0;
 
         // Must release al the memory allocated to the components attached to the entity
